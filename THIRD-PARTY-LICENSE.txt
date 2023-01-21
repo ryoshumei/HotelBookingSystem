@@ -1,0 +1,62 @@
+The following third-party software/repository might be used in this project
+
+MySQL Connector/J 8.0
+     __________________________________________________________________
+
+Introduction
+
+   This License Information User Manual contains Oracle's product license
+   and other licensing information, including licensing information for
+   third-party software which may be included in this distribution of
+   MySQL Connector/J 8.0.
+
+   Last updated: August 2022
+
+Licensing Information
+
+   This is a release of MySQL Connector/J 8.0, brought to you by the MySQL
+   team at Oracle. This software is released under version 2 of the GNU
+   General Public License (GPLv2), as set forth below, with the following
+   additional permissions:
+
+   This distribution of MySQL Connector/J 8.0 is distributed with certain
+   software that is licensed under separate terms, as designated in a
+   particular file or component or in the license documentation. Without
+   limiting your rights under the GPLv2, the authors of MySQL hereby grant
+   you an additional permission to link the program and your derivative
+   works with the separately licensed software that they have included
+   with the program.
+
+   Without limiting the foregoing grant of rights under the GPLv2 and
+   additional permission as to separately licensed software, this
+   Connector is also subject to the Universal FOSS Exception, version 1.0,
+   a copy of which is reproduced below and can also be found along with
+   its FAQ at http://oss.oracle.com/licenses/universal-foss-exception.
+
+   Copyright (c) 2017, 2022, Oracle and/or its affiliates.
+
+
+
+LGoodDatePicker-11.2.1
+     __________________________________________________________________
+The MIT License (MIT)
+
+Copyright (c) 2016 LGoodDatePicker
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
