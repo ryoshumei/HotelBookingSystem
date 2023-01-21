@@ -24,7 +24,7 @@ public class MySQLDatabaseManagement {
         String url = "jdbc:mysql://localhost:3306/my_hotel";
         //jdbc:mysql://[ホスト名]:[ポート番号]/[データベース名]
         String username = "root";
-        String password = "lll129647";
+        String password = "testing";
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
@@ -57,7 +57,7 @@ public class MySQLDatabaseManagement {
         String url = "jdbc:mysql://localhost:3306/my_hotel";
         //jdbc:mysql://[ホスト名]:[ポート番号]/[データベース名]
         String username = "root";
-        String password = "lll129647";
+        String password = "testing";
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
