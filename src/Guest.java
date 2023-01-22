@@ -2,6 +2,7 @@ import java.time.LocalDate;
 
 
 public class Guest {
+    private int idInDatabase;
     private String name;
     private int age;
     private int gender;
@@ -31,6 +32,14 @@ public class Guest {
     }
 
     //setter and getter
+
+    public int getIdInDatabase() {
+        return idInDatabase;
+    }
+
+    public void setIdInDatabase(int idInDatabase) {
+        this.idInDatabase = idInDatabase;
+    }
 
     public void setName(String n){
         name = n;

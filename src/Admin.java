@@ -68,6 +68,7 @@ public class Admin {
     }
 
     private void renewDataFromDatabase() {
+        clearAllRoomsDate();
         ArrayList<Guest> guestsInDatabase = MySQLDatabaseManagement.getGuestsFromDatabase();
         Iterator iterator = guestsInDatabase.iterator();
         while(iterator.hasNext()){
@@ -126,6 +127,49 @@ public class Admin {
 
                 }
             }
+        }
+    }
+
+    private void clearAllRoomsDate() {
+        Iterator roomF2 = f2.iterator();
+        Iterator roomF3 = f3.iterator();
+        Iterator roomF4 = f4.iterator();
+        Iterator roomF5 = f5.iterator();
+        Iterator roomF6 = f6.iterator();
+        while (roomF2.hasNext()){
+            Room room = (Room) roomF2.next();
+            room.getStayDate().clear();
+            //test
+            System.out.println("after clear all date" + room.getStayDate().size());
+            //end test
+        }
+        while (roomF3.hasNext()){
+            Room room = (Room) roomF3.next();
+            room.getStayDate().clear();
+            //test
+            System.out.println("after clear all date" + room.getStayDate().size());
+            //end test
+        }
+        while (roomF4.hasNext()){
+            Room room = (Room) roomF4.next();
+            room.getStayDate().clear();
+            //test
+            System.out.println("after clear all date" + room.getStayDate().size());
+            //end test
+        }
+        while (roomF5.hasNext()){
+            Room room = (Room) roomF5.next();
+            room.getStayDate().clear();
+            //test
+            System.out.println("after clear all date" + room.getStayDate().size());
+            //end test
+        }
+        while (roomF6.hasNext()){
+            Room room = (Room) roomF6.next();
+            room.getStayDate().clear();
+            //test
+            System.out.println("after clear all date" + room.getStayDate().size());
+            //end test
         }
     }
 
@@ -276,7 +320,7 @@ public class Admin {
 
         //setup Jtable
 
-        String column[]={"NAME","AGE", "GENDER", "CHECK-IN", "CHECK-OUT", "ROOM-NUMBER"};
+        String column[]={"ID","NAME","AGE", "GENDER", "CHECK-IN", "CHECK-OUT", "ROOM-NUMBER"};
         tableModel = new DefaultTableModel();
 
         tableModel.setColumnIdentifiers(column);
@@ -287,12 +331,20 @@ public class Admin {
         guestsList.setSize(500,300);
         JScrollPane sp=new JScrollPane(guestsList);
         guestsList.setVisible(true);
+        JPanel southJPanel = new JPanel();
+        southJPanel.setLayout(new BorderLayout());
+        southJPanel.add(BorderLayout.CENTER,sp);
+        JButton deleteButton = new JButton("Delete");
+        JPanel deletePanel = new JPanel();
+        deleteButton.addActionListener(new DeleteGuestListener());
+        deletePanel.add(deleteButton);
+        southJPanel.add(BorderLayout.EAST,deletePanel);
 
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
         mainPanel.add(BorderLayout.CENTER,all);
         mainPanel.add(BorderLayout.EAST,calendarPanel);
-        mainPanel.add(BorderLayout.SOUTH,sp);
+        mainPanel.add(BorderLayout.SOUTH,southJPanel);
 
         //JPanel calendarPanel = new ACalender().getGuiPanel();
         //frame.getContentPane().add(BorderLayout.EAST,calendarPanel);
@@ -412,6 +464,8 @@ public class Admin {
                 } else {
                     f2.get(i).setIsEmpty(true);
                 }
+            } else {
+                f2.get(i).setIsEmpty(true);
             }
 
             //System.out.println(f2.get(i).getRoomNum());
@@ -426,6 +480,8 @@ public class Admin {
                 }else {
                     f3.get(i).setIsEmpty(true);
                 }
+            } else {
+                f3.get(i).setIsEmpty(true);
             }
         }
         for(int i = 0; i < 6; i++){
@@ -436,6 +492,8 @@ public class Admin {
                 } else {
                     f4.get(i).setIsEmpty(true);
                 }
+            } else {
+                f4.get(i).setIsEmpty(true);
             }
 
         }
@@ -449,6 +507,8 @@ public class Admin {
                 }else {
                     f5.get(i).setIsEmpty(true);
                 }
+            }else {
+                f5.get(i).setIsEmpty(true);
             }
 
             temp = f6.get(i).getStayDate();
@@ -459,6 +519,8 @@ public class Admin {
                 }else {
                     f6.get(i).setIsEmpty(true);
                 }
+            } else {
+                f6.get(i).setIsEmpty(true);
             }
 
 
@@ -472,6 +534,8 @@ public class Admin {
                 }else {
                     f5.get(i).setIsEmpty(true);
                 }
+            } else {
+                f5.get(i).setIsEmpty(true);
             }
 
             temp = f6.get(i).getStayDate();
@@ -482,6 +546,8 @@ public class Admin {
                 }else {
                     f6.get(i).setIsEmpty(true);
                 }
+            } else {
+                f6.get(i).setIsEmpty(true);
             }
 
         }
@@ -565,6 +631,22 @@ public class Admin {
 
                 booking.showGuestInfoGUI(roomForBooking,curDate,admin);
             }
+        }
+    }
+
+    private class DeleteGuestListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int row = guestsList.getSelectedRow();
+            int id = Integer.parseInt(tableModel.getValueAt(row,0).toString());
+            System.out.println("ID : " + id + " will be delete");
+            MySQLDatabaseManagement.deleteGuestById(id);
+            MySQLDatabaseManagement.addDataToTable(tableModel);
+            renewDataFromDatabase();
+            updateAllRooms(curDate);
+
+
+
         }
     }
 }

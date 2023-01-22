@@ -69,6 +69,7 @@ public class MySQLDatabaseManagement {
 
             while(resultSet.next()){
                 Guest aGuest = new Guest();
+                aGuest.setIdInDatabase(resultSet.getInt("id"));
                 aGuest.setName(resultSet.getString("name"));
                 aGuest.setAge(resultSet.getInt("age"));
                 try{
@@ -97,19 +98,45 @@ public class MySQLDatabaseManagement {
     public static void addDataToTable(DefaultTableModel tableModel){
         ArrayList<Guest> guestsInDatabase = MySQLDatabaseManagement.getGuestsFromDatabase();
         tableModel.setRowCount(0);
-        //String column[]={"NAME","AGE", "GENDER", "CHECK-IN", "CHECK-OUT", "ROOM-NUMBER"};
+        //String column[]={"ID","NAME","AGE", "GENDER", "CHECK-IN", "CHECK-OUT", "ROOM-NUMBER"};
         for(int i = 0; i < guestsInDatabase.size(); i++){
-            String[] row = {guestsInDatabase.get(i).getName(),
+            String[] row = {Integer.toString(guestsInDatabase.get(i).getIdInDatabase()),
+                            guestsInDatabase.get(i).getName(),
                             Integer.toString(guestsInDatabase.get(i).getAge()),
                             MySQLDatabaseManagement.genderToString(guestsInDatabase.get(i).getGender()),
                             guestsInDatabase.get(i).getStartDay().toString(),
                             guestsInDatabase.get(i).getEndDay().toString(),
                             Integer.toString(guestsInDatabase.get(i).getRoomNumToStay())
             };
+
             tableModel.addRow(row);
         }
 
 
+    }
+
+    public static void deleteGuestById(int id){
+        String url = "jdbc:mysql://localhost:3306/my_hotel";
+        //jdbc:mysql://[ホスト名]:[ポート番号]/[データベース名]
+        String username = "root";
+        String password = "testing";
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+            System.out.println("Database connected!");
+
+            Statement statement = connection.createStatement();
+            String sql = "delete from guests where id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            statement.close();
+            connection.close();
+
+
+        } catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
     }
 
     public static String genderToString(int genderIndex){
