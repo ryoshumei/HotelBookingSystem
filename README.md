@@ -8,7 +8,7 @@
 
 ## 2. RUN
 
-Make sure you have MySQL on your environment and import  my_hotel_guests.sql or my_hotel_blank_guests.sql
+Make sure you have MySQL in your environment and import  my_hotel_guests.sql or my_hotel_blank_guests.sql
  to your MySQL . (my_hotel_guests.sql includes some test_data but my_hotel_blank_guests.sql doesn't. Both of them include "Create Schema "query)
 
 Replace DATABASE Connection Information in src/DatabaseAccInfo.java. This includes "URL", "USERNAME" , "PASSWORD".
