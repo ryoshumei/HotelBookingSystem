@@ -11,12 +11,10 @@ import java.util.Iterator;
 
 import com.github.lgooddatepicker.components.CalendarPanel;
 import com.github.lgooddatepicker.components.DatePickerSettings;
-import com.github.lgooddatepicker.components.*;
 import com.github.lgooddatepicker.optionalusertools.CalendarListener;
 import com.github.lgooddatepicker.optionalusertools.PickerUtilities;
 import com.github.lgooddatepicker.zinternaltools.CalendarSelectionEvent;
 import com.github.lgooddatepicker.zinternaltools.YearMonthChangeEvent;
-import com.privatejgoodies.forms.factories.CC;
 
 
 public class Admin {
@@ -91,7 +89,7 @@ public class Admin {
             while (roomF3.hasNext()){
                 Room room = (Room) roomF3.next();
                 if(room.getRoomNum() == guest.getRoomNumToStay()){
-                    System.out.println("MATCHED");
+                    //System.out.println("MATCHED");
                     for(LocalDate i = guest.getStartDay(); i.compareTo(guest.getEndDay()) < 0; i = i.plusDays(1)){
 
                         room.getStayDate().add(i);
@@ -140,35 +138,35 @@ public class Admin {
             Room room = (Room) roomF2.next();
             room.getStayDate().clear();
             //test
-            System.out.println("after clear all date" + room.getStayDate().size());
+            //System.out.println("after clear all date" + room.getStayDate().size());
             //end test
         }
         while (roomF3.hasNext()){
             Room room = (Room) roomF3.next();
             room.getStayDate().clear();
             //test
-            System.out.println("after clear all date" + room.getStayDate().size());
+            //System.out.println("after clear all date" + room.getStayDate().size());
             //end test
         }
         while (roomF4.hasNext()){
             Room room = (Room) roomF4.next();
             room.getStayDate().clear();
             //test
-            System.out.println("after clear all date" + room.getStayDate().size());
+            //System.out.println("after clear all date" + room.getStayDate().size());
             //end test
         }
         while (roomF5.hasNext()){
             Room room = (Room) roomF5.next();
             room.getStayDate().clear();
             //test
-            System.out.println("after clear all date" + room.getStayDate().size());
+            //System.out.println("after clear all date" + room.getStayDate().size());
             //end test
         }
         while (roomF6.hasNext()){
             Room room = (Room) roomF6.next();
             room.getStayDate().clear();
             //test
-            System.out.println("after clear all date" + room.getStayDate().size());
+            //System.out.println("after clear all date" + room.getStayDate().size());
             //end test
         }
     }
@@ -316,7 +314,7 @@ public class Admin {
         calendarPanel.setBorder(new LineBorder(Color.lightGray));
 
         curDate = calendarPanel.getSelectedDate();
-        System.out.println(curDate);
+        //System.out.println(curDate);
 
         //setup Jtable
 
@@ -441,7 +439,7 @@ public class Admin {
     }
 
     public void updateAllRooms(LocalDate newDate) {
-        System.out.println(newDate + " from updateAllRooms");
+        //System.out.println(newDate + " from updateAllRooms");
 
         //search every room on each floor
         for(int i = 0; i <8; i++){
@@ -458,7 +456,7 @@ public class Admin {
                 //System.out.println("cur index : " + i + " start: " + start + " end " + end);
                 //end debug
                 //if(newDate.compareTo(start) >= 0 && newDate.compareTo(end) <= 0)
-                System.out.println("if contains: " + temp.contains(newDate));
+                //System.out.println("if contains: " + temp.contains(newDate));
                 if(temp.contains(newDate)){
                     f2.get(i).setIsEmpty(false);
                 } else {
@@ -639,7 +637,7 @@ public class Admin {
         public void actionPerformed(ActionEvent e) {
             int row = guestsList.getSelectedRow();
             int id = Integer.parseInt(tableModel.getValueAt(row,0).toString());
-            System.out.println("ID : " + id + " will be delete");
+            //System.out.println("ID : " + id + " will be delete");
             MySQLDatabaseManagement.deleteGuestById(id);
             MySQLDatabaseManagement.addDataToTable(tableModel);
             renewDataFromDatabase();

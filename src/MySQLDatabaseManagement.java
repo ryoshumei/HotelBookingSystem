@@ -19,10 +19,8 @@ public class MySQLDatabaseManagement {
 
 
         System.out.println("get information: " + name + " " + age + " " + gender + " " + checkinDay + " " + checkOutDay + " " + roomNumToStay);
-        
-        //System.out.println("Hello Java");
+
         String url = DatabaseAccInfo.URL;
-        //jdbc:mysql://[ホスト名]:[ポート番号]/[データベース名]
         String username = DatabaseAccInfo.USERNAME;
         String password = DatabaseAccInfo.PASSWORD;
 
@@ -54,10 +52,9 @@ public class MySQLDatabaseManagement {
     public static ArrayList<Guest> getGuestsFromDatabase(){
         ArrayList<Guest> guests = new ArrayList<>();
 
-        String url = "jdbc:mysql://localhost:3306/my_hotel";
-        //jdbc:mysql://[ホスト名]:[ポート番号]/[データベース名]
-        String username = "root";
-        String password = "testing";
+        String url = DatabaseAccInfo.URL;
+        String username = DatabaseAccInfo.USERNAME;
+        String password = DatabaseAccInfo.PASSWORD;
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
@@ -116,10 +113,9 @@ public class MySQLDatabaseManagement {
     }
 
     public static void deleteGuestById(int id){
-        String url = "jdbc:mysql://localhost:3306/my_hotel";
-        //jdbc:mysql://[ホスト名]:[ポート番号]/[データベース名]
-        String username = "root";
-        String password = "testing";
+        String url = DatabaseAccInfo.URL;
+        String username = DatabaseAccInfo.USERNAME;
+        String password = DatabaseAccInfo.PASSWORD;
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);

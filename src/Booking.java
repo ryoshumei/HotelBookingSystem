@@ -19,16 +19,6 @@ public class Booking{
     private JButton clearButton;
 
 
-
-    public static void main(String[] args){
-        Booking bookingTest = new Booking();
-        SingleRoom room = new SingleRoom();
-        room.setRoomNum(201);
-        bookingTest.bookARoom(room,LocalDate.now(), new Admin());
-        bookingTest.bookingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-    }
     public void bookARoom(Room room, LocalDate localDate, Admin admin){
         Guest newGuest = new Guest();
         bookingFrame = new JFrame("Booking Window");
@@ -196,7 +186,7 @@ public class Booking{
 
     private void addGuestInformation(ArrayList<Guest> guests, LocalDate curDate) {
         //test
-        System.out.println("Guests Size is " + guests.size());
+        //System.out.println("Guests Size is " + guests.size());
         //end test
         for(int i = 0; i < guests.size(); i++){
 
@@ -236,7 +226,7 @@ public class Booking{
 
             String guestName = name.getText();
             int guestAge = Integer.parseInt(age.getText());
-            System.out.println("guestAge is " + guestAge);
+            //System.out.println("guestAge is " + guestAge);
             //String guestGender = gender.getSelectedItem().toString();
             int guestGenderIndex = gender.getSelectedIndex();
             //System.out.println("guestGenderIndex is " + guestGenderIndex);
@@ -254,8 +244,8 @@ public class Booking{
             guest.setEndDay(curDate.plusDays(guestStayDays));
             guest.setRoomNumToStay(roomForBooking.getRoomNum());
 
-            System.out.println("guestAge is " + guest.getAge());
-            System.out.println("guestGenderIndex is " + guest.getGender());
+            //System.out.println("guestAge is " + guest.getAge());
+            //System.out.println("guestGenderIndex is " + guest.getGender());
 
             for(int i = 0; i < guestStayDays ; i++){
                 roomForBooking.getStayDate().add(curDate.plusDays(i));
