@@ -21,10 +21,10 @@ public class MySQLDatabaseManagement {
         System.out.println("get information: " + name + " " + age + " " + gender + " " + checkinDay + " " + checkOutDay + " " + roomNumToStay);
         
         //System.out.println("Hello Java");
-        String url = "jdbc:mysql://localhost:3306/my_hotel";
+        String url = DatabaseAccInfo.URL;
         //jdbc:mysql://[ホスト名]:[ポート番号]/[データベース名]
-        String username = "root";
-        String password = "testing";
+        String username = DatabaseAccInfo.USERNAME;
+        String password = DatabaseAccInfo.PASSWORD;
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
